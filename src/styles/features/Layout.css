@@ -1,0 +1,200 @@
+.app-shell {
+    display: flex;
+    height: 100vh;
+    background-color: var(--bg-app);
+    overflow: hidden;
+    position: relative;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-panel);
+    border-right: 1px solid hsla(var(--hue-primary), 20%, 20%, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--bg-panel);
+}
+
+.brand-logo {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+    /* Slightly smaller for Thai fitting */
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    /* Allow scrolling on very small screens */
+}
+
+.tab-btn {
+    flex: 1;
+    /* Distribute space evenly */
+    padding: 1rem 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    /* Prevent breaking labels */
+    min-width: auto;
+    /* Allow shrinking */
+    font-size: 0.9rem;
+}
+
+.toggle-btn {
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    /* Fix alignment */
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-4);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    /* Prevent body scroll */
+}
+
+.top-bar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(var(--bg-app), 0.9);
+    backdrop-filter: blur(12px);
+    z-index: 50;
+    flex-shrink: 0;
+}
+
+.page-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-6);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+/* --- Mobile Responsiveness --- */
+
+/* Mobile Header/Hamburger */
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    background: transparent;
+    color: var(--text-primary);
+    margin-right: var(--space-4);
+}
+
+@media (max-width: 900px) {
+    .app-shell {
+        flex-direction: column;
+    }
+
+    /* Sidebar becomes a drawer */
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 280px;
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 90;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    .sidebar.open+.sidebar-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Show hamburger in Top Bar instead */
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Hide sidebar toggle since we use overlay/topbar trigger */
+    .sidebar .toggle-btn {
+        display: none;
+    }
+
+    .sidebar-header {
+        justify-content: center;
+    }
+
+    .content-area {
+        padding: var(--space-4);
+    }
+}

@@ -1,0 +1,45 @@
+:root {
+  /* Premium Dark Theme Palette */
+  --hue-primary: 260; /* Deep Violet */
+  --hue-secondary: 170; /* Teal/Cyan */
+  --hue-success: 150;
+  --hue-error: 340;
+
+  /* Backgrounds */
+  --bg-app: hsl(240, 20%, 8%);
+  --bg-panel: hsl(240, 18%, 12%);
+  --bg-panel-hover: hsl(240, 18%, 16%);
+  --bg-input: hsl(240, 15%, 18%);
+
+  /* Text */
+  --text-primary: hsl(240, 10%, 98%);
+  --text-secondary: hsl(240, 8%, 70%);
+  --text-muted: hsl(240, 6%, 50%);
+
+  /* Brand Colors */
+  --primary: hsl(var(--hue-primary), 90%, 65%);
+  --primary-glow: hsla(var(--hue-primary), 90%, 65%, 0.3);
+  --secondary: hsl(var(--hue-secondary), 80%, 55%);
+  --secondary-glow: hsla(var(--hue-secondary), 80%, 55%, 0.3);
+
+  /* Status */
+  --success: hsl(var(--hue-success), 70%, 45%);
+  --error: hsl(var(--hue-error), 80%, 55%);
+
+  /* Spacing */
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+
+  /* UI */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 4px 12px hsla(0, 0%, 0%, 0.2);
+  --shadow-lg: 0 12px 32px hsla(0, 0%, 0%, 0.4);
+  
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
